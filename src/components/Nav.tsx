@@ -33,7 +33,7 @@ const Nav = () => {
       <ul>
         <li>
           <Icon name="labels"/>
-          <Link to="/tags">标签</Link>
+          <Link to="/labels">标签</Link>
         </li>
         <li>
           <Icon name="money"/>
