@@ -5,7 +5,10 @@ import {
   Route,
   Navigate
 } from 'react-router-dom';
-import Layout from 'components/Layout';
+import Tags from 'views/Tags';
+import Money from 'views/Money';
+import Statistics from 'views/Statistics';
+import NotFound from './views/NotFound';
 
 
 function App() {
@@ -22,32 +25,5 @@ function App() {
   );
 }
 
-function NotFound() {
-  return <h2>当前页面不存在，地址错误！</h2>;
-}
-
-function Tags() {
-  return (
-    <Layout>
-      <h2>标签页</h2>
-    </Layout>
-  );
-}
-
-function Money() {
-  return (
-    <Layout>
-      <h2>记账页</h2>
-    </Layout>
-  );
-}
-
-function Statistics() {
-  return (
-    <Layout>
-      <h2>统计页</h2>
-    </Layout>
-  );
-}
 
 export default App;
