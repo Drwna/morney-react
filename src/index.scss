@@ -42,3 +42,10 @@ button {
   display: block;
   clear: both;
 }
+
+@media (min-width: 500px) {
+  #root {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
