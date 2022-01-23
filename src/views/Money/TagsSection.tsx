@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import React from 'react';
+import React, {useState} from 'react';
 
 const Wrapper = styled.section`
   background: #FFFFFF;
@@ -21,6 +21,11 @@ const Wrapper = styled.section`
       padding: 4px 16px;
       font-size: 14px;
       margin: 8px 12px;
+
+      &.selected {
+        background: #737373;
+        color: white;
+      }
     }
   }
 
@@ -35,15 +40,44 @@ const Wrapper = styled.section`
 `;
 
 const TagsSection: React.FC = () => {
+  const [tags, setTags] = useState<string[]>(['衣', '食', '住', '行']);
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
+
+  const onAddTag = () => {
+    let tagName = window.prompt('请输入标签名');
+    if (tagName === null) return;
+    if (tagName) tagName = tagName.trim();
+    if (!tagName) {
+      return window.alert('标签名不能为空！');
+    } else {
+      setTags([...tags, tagName]);
+    }
+  };
+
+  const onToggleTag = (tag: string) => {
+    const index = selectedTags.indexOf(tag);
+    if (index >= 0) {
+      // 如果 tag 已被选中，就复制所有 没有被选中的 tag, 作为新的 selectedTag
+      setSelectedTags(selectedTags.filter(t => t !== tag));
+    } else {
+      setSelectedTags([...selectedTags, tag]);
+    }
+  };
+
+  const getClass = (tag: string) =>
+    selectedTags.indexOf(tag) >= 0 ? 'selected' : '';
+
   return (
     <Wrapper>
       <ol>
-        <li>衣</li>
-        <li>食</li>
-        <li>住</li>
-        <li>行</li>
+        {tags.map(tag =>
+          <li key={tag} onClick={() => onToggleTag(tag)}
+              className={getClass(tag)}>
+            {tag}
+          </li>
+        )}
       </ol>
-      <button>新增标签</button>
+      <button onClick={onAddTag}>新增标签</button>
     </Wrapper>
   );
 };
