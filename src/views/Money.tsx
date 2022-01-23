@@ -32,7 +32,6 @@ const TagsSection = styled.section`
 
 const NotesSection = styled.section`
   background: #f5f5f5;
-  border: 1px solid red;
   padding: 0 16px;
   font-size: 14px;
 
@@ -57,7 +56,29 @@ const NotesSection = styled.section`
 
 
 const CategorySection = styled.section`
+  font-size: 24px;
 
+  > ul {
+    display: flex;
+    background: #c4c4c4;
+
+    > li {
+      width: 50%;
+      text-align: center;
+      padding: 18px 0;
+      position: relative;
+
+      &.selected::after {
+        content: '';
+        width: 100%;
+        height: 4px;
+        background: #333;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
+    }
+  }
 `;
 
 const NumberSection = styled.section`
@@ -87,7 +108,7 @@ function Money() {
 
       <CategorySection>
         <ul>
-          <li>支出</li>
+          <li className="selected">支出</li>
           <li>收入</li>
         </ul>
       </CategorySection>
