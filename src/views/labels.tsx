@@ -3,24 +3,23 @@ import React from 'react';
 import {useTags} from '../useTags';
 import styled from 'styled-components';
 import Icon from '../components/Icon';
+import {NavLink} from 'react-router-dom';
 
 const TagList = styled.ol`
   background: white;
   font-size: 16px;
-  padding-left: 16px;
 
   > li {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    line-height: 20px;
+    margin-left: 16px;
     border-bottom: 2px solid #e6e6e6;
+    min-height: 44px;
 
-    > svg {
-      width: 16px;
-      height: 16px;
-      color: #333333;
-      margin-right: 16px;
+    > a {
+      padding: 10px 16px 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 `;
@@ -51,8 +50,10 @@ function Tags() {
       <TagList>
         {tags.map(tag =>
           <li key={tag}>
-            <span className="oneLine">{tag}</span>
-            <Icon name="right"/>
+            <NavLink to={'/labels/' + tag}>
+              <span className="oneLine">{tag}</span>
+              <Icon name="right"/>
+            </NavLink>
           </li>
         )}
       </TagList>

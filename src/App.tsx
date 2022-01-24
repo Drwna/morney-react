@@ -10,6 +10,7 @@ import Money from 'views/Money';
 import Statistics from 'views/Statistics';
 import NotFound from './views/NotFound';
 import styled from 'styled-components';
+import {Label} from './views/Label';
 
 const AppWrapper = styled.div`
   color: #333;
@@ -21,6 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/labels" element={<Labels/>}/>
+          <Route path="/labels/:label" element={<Label/>}/>
           <Route path="/money" element={<Money/>}/>
           <Route path="/statistics" element={<Statistics/>}/>
           <Route path="/" element={<Navigate replace to="/money"/>}/>
