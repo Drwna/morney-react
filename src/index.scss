@@ -44,6 +44,12 @@ button {
   clear: both;
 }
 
+.oneLine {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 @media (min-width: 500px) {
   #root {
     max-width: 500px;
