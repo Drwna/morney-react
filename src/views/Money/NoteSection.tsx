@@ -25,7 +25,7 @@ const Wrapper = styled.section`
   }
 `;
 
-const NoteSection = () => {
+const NoteSection:React.FC = () => {
   const [note, setNote] = useState('');
   console.log(note);
   const refInput = useRef<HTMLInputElement>(null);
