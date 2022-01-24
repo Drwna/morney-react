@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Routes>
           <Route path="/labels" element={<Labels/>}/>
-          <Route path="/labels/:label" element={<Label/>}/>
+          <Route path="/labels/:id" element={<Label/>}/>
           <Route path="/money" element={<Money/>}/>
           <Route path="/statistics" element={<Statistics/>}/>
           <Route path="/" element={<Navigate replace to="/money"/>}/>
