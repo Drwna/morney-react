@@ -6,6 +6,7 @@ const Wrapper = styled.label`
   align-items: center;
 
   > span {
+    font-size: 14px;
     margin-right: 16px;
     white-space: nowrap;
   }
@@ -13,10 +14,10 @@ const Wrapper = styled.label`
   > input {
     display: block;
     width: 100%;
-    height: 60px;
+    height: 44px;
     background: transparent;
     border: none;
-
+  }
 `;
 
 type Props = {

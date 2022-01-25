@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Icon from 'components/Icon';
 import {NavLink} from 'react-router-dom';
 import {Button} from 'components/Button';
+import {Center} from 'components/Center';
 
 const TagList = styled.ol`
   background: white;
@@ -23,13 +24,6 @@ const TagList = styled.ol`
       align-items: center;
     }
   }
-`;
-
-const Center = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 28px;
 `;
 
 function Tags() {

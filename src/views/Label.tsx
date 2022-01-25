@@ -5,7 +5,15 @@ import Layout from 'components/Layout';
 import Icon from 'components/Icon';
 import {Button} from 'components/Button';
 import styled from 'styled-components';
+import {Input} from 'components/Input';
+import {Center} from '../components/Center';
 
+
+const InputWrapper = styled.div`
+  background: white;
+  padding: 0 16px;
+  margin-top: 8px;
+`;
 
 const Topbar = styled.header`
   text-align: center;
@@ -33,15 +41,15 @@ const Label: React.FC = () => {
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
-      {tag?.name}
-      <div>
-        <label>
-          <span>标签名</span>
-          <input type="text"/>
-        </label>
-      </div>
-      <Button>删除标签</Button>
 
+      <InputWrapper>
+        <Input label="标签名" placeholder="请输入标签名"
+               value={tag?.name}/>
+      </InputWrapper>
+
+      <Center>
+        <Button>删除标签</Button>
+      </Center>
     </Layout>
   );
 };
