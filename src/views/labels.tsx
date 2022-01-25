@@ -1,9 +1,10 @@
-import Layout from '../components/Layout';
+import Layout from 'components/Layout';
 import React from 'react';
-import {useTags} from '../useTags';
+import {useTags} from 'useTags';
 import styled from 'styled-components';
-import Icon from '../components/Icon';
+import Icon from 'components/Icon';
 import {NavLink} from 'react-router-dom';
+import {Button} from 'components/Button';
 
 const TagList = styled.ol`
   background: white;
@@ -24,23 +25,12 @@ const TagList = styled.ol`
   }
 `;
 
-const Button = styled.button`
-  background: #767676;
-  color: white;
-  border-radius: 4px;
-  border: none;
-  padding: 0 16px;
-  height: 40px;
-
-`;
-
 const Center = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 28px;
 `;
-
 
 function Tags() {
   const {tags} = useTags();
