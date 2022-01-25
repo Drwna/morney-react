@@ -36,10 +36,13 @@ const Label: React.FC = () => {
   const {id: idString} = useParams<Params>()!;
   const tag = findTag(parseInt(idString!));
 
+  const onClickBack = () => navigate('/labels');
+
   return (
     <Layout>
       <Topbar>
-        <Icon name="left"/>
+        <Icon name="left"
+              onClick={onClickBack}/>
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
