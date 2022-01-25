@@ -6,7 +6,7 @@ import Icon from 'components/Icon';
 import {Button} from 'components/Button';
 import styled from 'styled-components';
 import {Input} from 'components/Input';
-import {Center} from '../components/Center';
+import {Center} from 'components/Center';
 
 
 const InputWrapper = styled.div`
@@ -27,12 +27,13 @@ const Topbar = styled.header`
 
 type Params = {
   id: string
+  name: string
 }
 const Label: React.FC = () => {
-  const {findTag} = useTags();
-  const {id} = useParams<Params>();
-  let tag;
-  if (id !== undefined) tag = findTag(parseInt(id));
+  const {findTag, updateTag} = useTags();
+  // 获取 URL id
+  const {id: idString} = useParams<Params>()!;
+  const tag = findTag(parseInt(idString!));
 
   return (
     <Layout>
@@ -44,7 +45,10 @@ const Label: React.FC = () => {
 
       <InputWrapper>
         <Input label="标签名" placeholder="请输入标签名"
-               value={tag?.name}/>
+               value={tag.name}
+               onChange={e => {
+                 updateTag(tag.id, {name: e.target.value});
+               }}/>
       </InputWrapper>
 
       <Center>
