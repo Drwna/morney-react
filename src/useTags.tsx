@@ -33,7 +33,19 @@ const useTags = () => { // 封装一个自定义 Hook
     setTags(tagsClone);
   };
 
-  return {tags, setTags, findTag, updateTag, findTagIndex};
+  const deleteTag = (id: number) => {
+    if (window.confirm('确认删除？')) {
+      const index = findTagIndex(id);
+      const tagsClone = JSON.parse(JSON.stringify(tags));
+      tagsClone.splice(index, 1);
+      setTags(tagsClone);
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag};
 };
 
 export {useTags};

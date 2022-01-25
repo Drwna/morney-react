@@ -1,5 +1,5 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import {useTags} from 'useTags';
 import Layout from 'components/Layout';
 import Icon from 'components/Icon';
@@ -30,7 +30,8 @@ type Params = {
   name: string
 }
 const Label: React.FC = () => {
-  const {findTag, updateTag} = useTags();
+  const navigate = useNavigate();
+  const {findTag, updateTag, deleteTag} = useTags();
   // 获取 URL id
   const {id: idString} = useParams<Params>()!;
   const tag = findTag(parseInt(idString!));
@@ -42,7 +43,6 @@ const Label: React.FC = () => {
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
-
       <InputWrapper>
         <Input label="标签名" placeholder="请输入标签名"
                value={tag.name}
@@ -50,9 +50,10 @@ const Label: React.FC = () => {
                  updateTag(tag.id, {name: e.target.value});
                }}/>
       </InputWrapper>
-
       <Center>
-        <Button>删除标签</Button>
+        <Button onClick={() => {
+          deleteTag(tag.id) && navigate('/labels');
+        }}>删除标签</Button>
       </Center>
     </Layout>
   );
