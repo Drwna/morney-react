@@ -24,21 +24,13 @@ const useTags = () => { // 封装一个自定义 Hook
     return result;
   };
 
-  const updateTag = (id: number, obj: { name: string }) => {
-    const index = findTagIndex(id);
-    // 深拷贝 tags 得到 tagsClone
-    const tagsClone = JSON.parse(JSON.stringify(tags));
-    // 把 tagsClone 的第 index 删掉，换成 {id:id, name: obj.name}
-    tagsClone.splice(index, 1, {id: id, name: obj.name});
-    setTags(tagsClone);
+  const updateTag = (id: number, {name}: { name: string }) => {
+    setTags(tags.map(tag => tag.id === id ? {id, name} : tag));
   };
 
   const deleteTag = (id: number) => {
     if (window.confirm('确认删除？')) {
-      const index = findTagIndex(id);
-      const tagsClone = JSON.parse(JSON.stringify(tags));
-      tagsClone.splice(index, 1);
-      setTags(tagsClone);
+      setTags(tags.filter(tag => tag.id !== id));
       return true;
     } else {
       return false;
