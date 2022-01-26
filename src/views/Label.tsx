@@ -38,6 +38,25 @@ const Label: React.FC = () => {
 
   const onClickBack = () => navigate('/labels');
 
+  const tagContent = () => {
+    return (
+      <>
+        <InputWrapper>
+          <Input label="标签名" placeholder="请输入标签名"
+                 value={tag.name}
+                 onChange={e => {
+                   updateTag(tag.id, {name: e.target.value});
+                 }}/>
+        </InputWrapper>
+        <Center>
+          <Button onClick={() => {
+            deleteTag(tag.id) && navigate('/labels');
+          }}>删除标签</Button>
+        </Center>;
+      </>
+    );
+  };
+
   return (
     <Layout>
       <Topbar>
@@ -46,18 +65,7 @@ const Label: React.FC = () => {
         <span>编辑标签</span>
         <Icon/>
       </Topbar>
-      <InputWrapper>
-        <Input label="标签名" placeholder="请输入标签名"
-               value={tag.name}
-               onChange={e => {
-                 updateTag(tag.id, {name: e.target.value});
-               }}/>
-      </InputWrapper>
-      <Center>
-        <Button onClick={() => {
-          deleteTag(tag.id) && navigate('/labels');
-        }}>删除标签</Button>
-      </Center>
+      {tag ? tagContent() : <Center>tag 不存在</Center>}
     </Layout>
   );
 };
