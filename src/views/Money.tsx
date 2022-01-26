@@ -28,7 +28,7 @@ function Money() {
   const onChange = (obj: Partial<typeof selected>) => {
     setSelected({...selected, ...obj});
   };
-  const {records, addRecord} = useRecords();
+  const {addRecord} = useRecords();
 
   const submit = () => {
     addRecord(selected);
@@ -38,7 +38,6 @@ function Money() {
 
   return (
     <MyLayout>
-      {JSON.stringify(records)}
       <TagsSection value={selected.tagIds}
                    onChange={tagIds => onChange({tagIds})}/>
 
