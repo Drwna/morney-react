@@ -10,10 +10,10 @@ type Props = {
 }
 
 const NumberPadSection: React.FC<Props> = (props) => {
-  const output = props.value.toString();
+  const output = props.value;
 
   const setOutput = (output: string) => {
-    let value;
+    let value: string;
     if (output.length >= 16) {
       value = output.slice(0, 16);
     } else if (output.length === 0) {
