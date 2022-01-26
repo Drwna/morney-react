@@ -23,8 +23,17 @@ const useRecords = () => {
   }, [records]);
 
   const addRecord = (newRecord: newRecordItem) => {
+    if (parseFloat(newRecord.amount) <= 0) {
+      alert('金额不能为 0');
+      return false;
+    }
+    if (newRecord.tagIds.length < 1) {
+      alert('请至少选择一个标签');
+      return false;
+    }
     const record = {...newRecord, createdAt: (new Date()).toISOString()};
     setRecords([...records, record]);
+    return true;
   };
 
   return {records, addRecord};
