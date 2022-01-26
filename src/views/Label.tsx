@@ -36,7 +36,7 @@ const Label: React.FC = () => {
   const {id: idString} = useParams<Params>()!;
   const tag = findTag(parseInt(idString!));
 
-  const onClickBack = () => navigate('/labels');
+  const onClickBack = () => navigate(-1);
 
   const tagContent = () => {
     return (
@@ -50,7 +50,7 @@ const Label: React.FC = () => {
         </InputWrapper>
         <Center>
           <Button onClick={() => {
-            deleteTag(tag.id) && navigate('/labels');
+            deleteTag(tag.id) && navigate(-1);
           }}>删除标签</Button>
         </Center>;
       </>
