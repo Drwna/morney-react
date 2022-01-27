@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createId} from 'lib/createId';
 import {useUpdate} from 'hooks/useUpdate';
 
@@ -60,7 +60,13 @@ const useTags = () => { // 封装一个自定义 Hook
     }
     setTags([...tags, {id: createId(), name: tagName}]);
   };
-  return {tags, setTags, findTag, updateTag, findTagIndex, deleteTag, addTag};
+
+  const getName = (id: number) => {
+    const tag = tags.filter(t => t.id === id)[0];
+    return tag ? tag.name : '';
+  };
+
+  return {tags, setTags, getName, findTag, updateTag, findTagIndex, deleteTag, addTag};
 };
 
 export {useTags};
