@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {createId} from 'lib/createId';
 import {useUpdate} from 'hooks/useUpdate';
+import dayjs from 'dayjs';
 
 const useTags = () => { // 封装一个自定义 Hook
   const [tags, setTags] = useState<{ id: number; name: string }[]>([]);
@@ -66,7 +67,24 @@ const useTags = () => { // 封装一个自定义 Hook
     return tag ? tag.name : '';
   };
 
-  return {tags, setTags, getName, findTag, updateTag, findTagIndex, deleteTag, addTag};
+  const beautify = (string: string) => {
+    const day = dayjs(string);
+    const now = dayjs();
+    if (day.isSame(now, 'day')) {
+      return '今天';
+    } else if (day.isSame(now.subtract(1, 'day'), 'day')) {
+      return '昨天';
+    } else if (day.isSame(now.subtract(2, 'day'), 'day')) {
+      return '前天';
+    } else if (day.isSame(now, 'year')) {
+      return day.format('M月D日');
+    } else {
+      return day.format('YYYY年M月D日');
+    }
+  };
+
+
+  return {tags, setTags, beautify, getName, findTag, updateTag, findTagIndex, deleteTag, addTag};
 };
 
 export {useTags};
