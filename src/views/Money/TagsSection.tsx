@@ -4,7 +4,7 @@ import {useTags} from 'hooks/useTags';
 
 const Wrapper = styled.section`
   background: #FFFFFF;
-  padding: 12px 16px;
+  padding: 10px 16px;
   // MyLayout
   flex-grow: 1;
   display: flex;

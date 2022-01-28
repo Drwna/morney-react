@@ -8,9 +8,9 @@ import {
 import Labels from 'views/labels';
 import Money from 'views/Money';
 import Statistics from 'views/Statistics';
-import NotFound from './views/NotFound';
+import NotFound from 'views/NotFound';
 import styled from 'styled-components';
-import {Label} from './views/Label';
+import {Label} from 'views/Label';
 
 const AppWrapper = styled.div`
   color: #333;
